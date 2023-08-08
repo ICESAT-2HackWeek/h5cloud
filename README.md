@@ -1,13 +1,12 @@
-# H5Cloud - Cloud Optimized Benchmarks and Workflows for ATL03 ICESat-2 Data
-
+# H5Cloud - Cloud-Optimized Access of Hierarchical ICESat-2 Photon Data
 
 ## Collaborators
-Aimee Barciauskas, Development Seed
-Luis Lopez, NSIDC
-Jonathan Markel, UT Austin
-Alex Lewandowski, Alaska Satellite Facility
-Suman Shekhar, Rutgers
-Andy Barrett, NSIDC
+Aimee Barciauskas, Development Seed <br>
+Luis Lopez, NSIDC <br>
+Jonathan Markel, UT Austin <br>
+Alex Lewandowski, Alaska Satellite Facility <br>
+Suman Shekhar, Rutgers University <br>
+Andy Barrett, NSIDC <br>
 
 ## The Problem
 ICESat-2 photon-data is formatted as HDF5 files, which provide many advantages for scientific applications including being self-describing and able to store heterogenous data.
@@ -23,8 +22,6 @@ ATL03 files used for testing were selected to maximize baseline ATL03 filesize, 
 - [icepyx](https://icepyx.readthedocs.io/en/latest/index.html)
 - [SlideRule](https://github.com/ICESat2-SlideRule)
 - [ICESat-2 Hackweek Data Access Tutorials](https://icesat-2-2023.hackweek.io/tutorials/data-access-and-format/index.html)
-
-
 
 ## Folders
 
