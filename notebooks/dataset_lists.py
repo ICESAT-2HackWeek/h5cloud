@@ -8,6 +8,7 @@ ONE_BEAM_GROUP = [
     f"{BEAM_GROUP}/dist_ph_across",
     f"{BEAM_GROUP}/dist_ph_along",
     f"{BEAM_GROUP}/h_ph",
+    f"{BEAM_GROUP}/lat_ph",
     f"{BEAM_GROUP}/lon_ph",
     f"{BEAM_GROUP}/pce_mframe_cnt",
     f"{BEAM_GROUP}/ph_id_channel",
