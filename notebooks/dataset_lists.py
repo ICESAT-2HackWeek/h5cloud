@@ -1,24 +1,20 @@
-"""Collections of datasets for benchmarhing"""
+"""Collections of datasets for benchmarking"""
 
-BEAM_GROUP = "gt1l/land_ice_segments"
+BEAM_GROUP = "gt1l/heights"
 
 # Datasets to read for benchmark tests
 ONE_BEAM_GROUP = [
-    f"{BEAM_GROUP}/atl06_quality_summary", 
-    f"{BEAM_GROUP}/delta_time",
-    f"{BEAM_GROUP}/h_li",
-    f"{BEAM_GROUP}/h_li_sigma",
-    f"{BEAM_GROUP}/latitude",
-    f"{BEAM_GROUP}/longitude",
-    f"{BEAM_GROUP}/segment_id",
-    f"{BEAM_GROUP}/sigma_geo_h",
-]
-
-XARRAY_LIKE_ONE_DATASET = [
-    f"{BEAM_GROUP}/delta_time",
-    f"{BEAM_GROUP}/h_li",
-    f"{BEAM_GROUP}/latitude",
-    f"{BEAM_GROUP}/longitude",
+    f"{BEAM_GROUP}/delta_time", 
+    f"{BEAM_GROUP}/dist_ph_across",
+    f"{BEAM_GROUP}/dist_ph_along",
+    f"{BEAM_GROUP}/h_ph",
+    f"{BEAM_GROUP}/lon_ph",
+    f"{BEAM_GROUP}/pce_mframe_cnt",
+    f"{BEAM_GROUP}/ph_id_channel",
+    f"{BEAM_GROUP}/ph_id_count",
+    f"{BEAM_GROUP}/ph_id_pulse",
+    f"{BEAM_GROUP}/quality_ph",
+    f"{BEAM_GROUP}/signal_conf_ph",
 ]
 
 # Links to h5cloud s3 bucket
