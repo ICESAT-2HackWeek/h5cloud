@@ -9,8 +9,10 @@ Suman Shekhar, Rutgers University <br>
 Andy Barrett, NSIDC <br>
 
 ## The Problem
-ICESat-2 photon-data is formatted as HDF5 files, which provide many advantages for scientific applications including being self-describing and able to store heterogenous data.
-However, ICESat-2 granules are frequently over a larger spatial extent than is needed for scientific workflows, meaning users must read in the full ATL03 HDF5 file to geolocate the data, then subset to a given area of interest. Applications like EarthData and NSIDC data portals have simplified this process for users by allowing them to provide a bounding box and only returning the subset data. Still, because HDF5 files are serialized, the original ATL03 H5 file must be read fully into memory by the cloud provider.
+ICESat-2 photon-data is stored as HDF5 files, which provide many advantages for scientific applications including being self-describing and able to store heterogenous data.
+However, ICESat-2 granules are frequently over a larger spatial extent than is needed for scientific workflows, meaning users must read in the full ATL03 HDF5 file to geolocate the data, then subset to a given area of interest. Applications like EarthData and NSIDC data portals have simplified this process allowing users to subset files using a bounding box. 
+
+Subsetting tools are not available when working in the cloud and directly access data stored in S3 buckets.  The reason for this is that HDF5 files are serialized.  HDF5 files stored in S3 buckets must be read fully into memory before they can be subsetted.  These file access patterns are often slower than working with files downloaded to local file systems. 
 
 This is in contrast to raster data, where cloud-optimized GeoTIFFs are organized internally such that it is easy to access only a specific subset of the total area using HTTP GET range requests. A similar capability for ICESat-2 along-track photon data would provide measurable read performance improvements for cloud data providers and local data users alike. The current aims of this Hackweek group are to benchmark current methods of accessing/subsetting ATL03 data from a public cloud data source (AWS S3), investigate methods of repacking photon data, and determine how libraries like [kerchunk](https://fsspec.github.io/kerchunk/) can be used for more efficient requesting of data from specific along-track locations.
  
