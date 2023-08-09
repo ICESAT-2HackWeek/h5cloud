@@ -38,7 +38,7 @@ class S3Links:
             print(f"{name} not found in self.table")
             return None
         
-    def get_link_by_fileid(self, file_format -> str, fileid -> int) -> str:
+    def get_link_by_fileid(self, file_format: str, fileid: int)-> str:
         """Returns an S3 link for a file_format and fileid - array index 
         
         file_format : one of the file formats listed in self.formats
