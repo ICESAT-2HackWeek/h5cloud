@@ -20,3 +20,7 @@ XARRAY_LIKE_ONE_DATASET = [
     f"{BEAM_GROUP}/latitude",
     f"{BEAM_GROUP}/longitude",
 ]
+
+# Links to h5cloud s3 bucket
+# list contents with `aws s3 ls s3://nasa-cryo-scratch/h5cloud/`
+S3BUCKET = 's3://nasa-cryo-scratch/h5cloud/'
