@@ -2,11 +2,13 @@
 
 ## Collaborators
 Aimee Barciauskas, Development Seed <br>
-Luis Lopez, NSIDC <br>
-Jonathan Markel, UT Austin <br>
-Alex Lewandowski, Alaska Satellite Facility <br>
-Suman Shekhar, Rutgers University <br>
 Andy Barrett, NSIDC <br>
+Wei Ji, Development Seed <br>
+Alex Lewandowski, Alaska Satellite Facility <br>
+Luis Lopez, NSIDC <br>
+Alex Mandel, Development Seed <br>
+Jonathan Markel, UT Austin <br>
+Suman Shekhar, Rutgers University <br>
 
 ## The Problem
 ICESat-2 photon-data is formatted as HDF5 files, which provide many advantages for scientific applications including being self-describing and able to store heterogenous data.

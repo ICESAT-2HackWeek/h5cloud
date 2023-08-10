@@ -1,11 +1,7 @@
-import s3fs
-
 import json
 from pathlib import Path
 
-S3PATH = s3path = f"s3://nasa-cryo-scratch/h5cloud/*"
-
-S3FILELINKS = Path("../s3filelinks.json")
+S3FILELINKS = Path("../helpers/s3filelinks.json")
 
 class S3Links:
     """Class to load and return S3 links for test files
@@ -40,7 +36,7 @@ class S3Links:
     'h5cloud/original/ATL03_20181120182818_08110112_006_02.h5'
     """
     
-    def __init__(self, source="from_bucket"):
+    def __init__(self):
         self.json_file = S3FILELINKS
         self.table = load_s3testfile(S3FILELINKS)
         self.formats = list(self.table.keys())
@@ -81,26 +77,12 @@ class S3Links:
         return dict([make_entry(link) for fmt in self.table.values() for link in fmt.values()])
     
     
-def load_s3testfile(file_format):
+def load_s3testfile(file_format, filename=None, fileid=None):
     """Loads json file with s3 links"""
     with open(S3FILELINKS, 'r') as f:
         json_obj = json.load(f)
     return json_obj
 
-
-def glob_s3testfile():
-    """Generates dict of testfiles using glob of s3 bucket"""
-    filelist = {}
-    for folder in s3.glob(S3PATH):
-        file_format = folder.split('/')[-1]
-        if file_format not in filelist.keys():
-            filelist[file_format] = {}
-        for path in s3.glob(f"{folder}/*"):
-            name = path.split('/')[-1]
-            filelist[file_format][name] = path
-    return filelist
-
-            
 def make_entry(path):
     """Helper to return tuple containing a filename and s3 link"""
     name = path.split('/')[-1]
