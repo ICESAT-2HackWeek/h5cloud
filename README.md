@@ -37,10 +37,14 @@ Key:
 - x = File format not supported by library.
 
 ## Resources
-- [h5coro](https://github.com/ICESat2-SlideRule/h5coro)
-- [icepyx](https://icepyx.readthedocs.io/en/latest/index.html)
-- [SlideRule](https://github.com/ICESat2-SlideRule)
 - [ICESat-2 Hackweek Data Access Tutorials](https://icesat-2-2023.hackweek.io/tutorials/data-access-and-format/index.html)
+- [SlideRule](https://github.com/ICESat2-SlideRule)
+- [gedi-subsetter](https://github.com/MAAP-Project/gedi-subsetter)
+- [geopandas](https://geopandas.org/en/v0.13.2/index.html)
+- [h5coro](https://github.com/ICESat2-SlideRule/h5coro)
+- [h5py](https://docs.h5py.org/en/stable/index.html)
+- [icepyx](https://icepyx.readthedocs.io/en/latest/index.html)
+- [xarray](https://docs.xarray.dev/en/v2023.06.0)
 
 ## Folders
 
