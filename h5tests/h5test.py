@@ -32,7 +32,7 @@ def timer_decorator(func):
     return wrapper
 
 class H5Test:
-    def __init__(self, data_format: str, files: None, store_results: True):
+    def __init__(self, data_format: str, files=None, store_results=True):
         self.name = self.__class__.__name__
         self.data_format = data_format
         if files:
