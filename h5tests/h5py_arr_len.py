@@ -10,8 +10,7 @@ class H5pyArrLen(H5Test):
         group = '/gt1l/heights'
         variable = 'h_ph'        
         for file in self.files:
-            s3_filename = f"s3://{self.bucket}/{file}"
-            with h5py.File(self.s3_fs.open(s3_filename, 'rb')) as f:
+            with h5py.File(self.s3_fs.open(file, 'rb')) as f:
                 data = f[f'{group}/{variable}'][:]
                 # Need to test if using concatenate is faster
                 final_h5py_array = np.insert(

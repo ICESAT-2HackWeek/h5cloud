@@ -20,7 +20,7 @@ class H5CoroArrLen(H5Test):
         variable = 'h_ph'        
         final_h5coro_array = []
         for file in self.files:
-            h5obj = h5coro.H5Coro(f"{self.bucket}/{file}", s3driver.S3Driver)
+            h5obj = h5coro.H5Coro(file.replace("s3://", ""), s3driver.S3Driver)
             output = h5obj.readDatasets(datasets=[f'{group}/{variable}'], block=True)
             data = h5obj[f'{group}/{variable}'].values
             final_h5coro_array = np.insert(final_h5coro_array, len(final_h5coro_array), data, axis=None)
