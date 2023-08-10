@@ -1,7 +1,11 @@
 import json
 from pathlib import Path
 
+import s3fs
+
+S3LINK = "s3://nasa-cryo-scratch/h5cloud/"
 S3FILELINKS = Path("../helpers/s3filelinks.json")
+
 
 class S3Links:
     """Class to load and return S3 links for test files
@@ -82,6 +86,22 @@ def load_s3testfile(file_format, filename=None, fileid=None):
     with open(S3FILELINKS, 'r') as f:
         json_obj = json.load(f)
     return json_obj
+
+def glob_s3bucket():
+    """Gets dict of test files from s3 bucket"""
+    s3 = s3fs.S3FileSystem(anon=False)
+    
+    filelist = {}
+    for folder in s3.glob(f"{S3LINK}*"):
+        file_format = folder.split('/')[-1]
+        if file_format not in filelist.keys():
+            filelist[file_format] = {}
+        for path in s3.glob(f"{folder}/*"):
+            name = path.split('/')[-1]
+            filelist[file_format][name] = path
+        
+    return filelist
+
 
 def make_entry(path):
     """Helper to return tuple containing a filename and s3 link"""
