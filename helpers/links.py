@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
 
-S3FILELINKS = Path("../s3filelinks.json")
+S3FILELINKS = Path("../helpers/s3filelinks.json")
 
 class S3Links:
     """Class to load and return S3 links for test files
