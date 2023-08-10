@@ -1,5 +1,6 @@
 import json
 from pathlib import Path
+import re
 
 import s3fs
 
@@ -80,25 +81,47 @@ class S3Links:
         """Returns a dictionary of all files indexed by name"""
         return dict([make_entry(link) for fmt in self.table.values() for link in fmt.values()])
     
-    
+    def update_links(self, write_to_file=True):
+        """Updates links by globbing S3 bucket"""
+        filelinks = glob_s3bucket()
+        if filelinks != self.table:
+            print("Differences between self.table and S3 buckets: updating self.table") 
+            self.table = filelinks
+            self.formats = list(self.table.keys())
+            response = input(f"Update {S3FILELINKS} (y or n)?")
+            if response.lower() == "y":
+                print(f"Updating {S3FILELINKS}")
+                write_s3links(filelinks)
+            
+        
 def load_s3testfile(file_format, filename=None, fileid=None):
     """Loads json file with s3 links"""
     with open(S3FILELINKS, 'r') as f:
         json_obj = json.load(f)
     return json_obj
 
+
+def write_s3links(filelinks):
+    with open(S3FILELINKS, 'w') as f:
+        json.dump(filelinks, f)
+        
+        
 def glob_s3bucket():
     """Gets dict of test files from s3 bucket"""
     s3 = s3fs.S3FileSystem(anon=False)
     
+    isfile = re.compile('\..*')
+    
     filelist = {}
     for folder in s3.glob(f"{S3LINK}*"):
         file_format = folder.split('/')[-1]
+        if file_format == "benchmark_results": continue
         if file_format not in filelist.keys():
             filelist[file_format] = {}
         for path in s3.glob(f"{folder}/*"):
             name = path.split('/')[-1]
-            filelist[file_format][name] = path
+            if isfile.search(name):
+                filelist[file_format][name] = f"s3://{path}"
         
     return filelist
 
