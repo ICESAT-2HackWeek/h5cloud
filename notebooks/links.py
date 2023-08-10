@@ -8,8 +8,32 @@ class S3Links:
     
     This loads s3filelinks.json as a dictionary.
     
+    # Import S3Links class
+    from links import S3Links
+    
+    # Instantiate class
     s3links = S3Links()
     
+    # Get a list of available formats
+    s3links.formats
+    ['h5repack', 'original']
+    
+    # Get a list of s3 links for a format
+    s3links.get_links_by_format('h5repack')
+    
+    ['h5cloud/h5repack/ATL03_20181120182818_08110112_006_02_repacked.h5',
+     'h5cloud/h5repack/ATL03_20190219140808_08110212_006_02_repacked.h5',
+     'h5cloud/h5repack/ATL03_20200217204710_08110612_006_01_repacked.h5',
+     'h5cloud/h5repack/ATL03_20211114142614_08111312_006_01_repacked.h5',
+     'h5cloud/h5repack/ATL03_20230211164520_08111812_006_01_repacked.h5']
+     
+    # Get a S3 link by filename
+    s3links.get_link_by_name('ATL03_20181120182818_08110112_006_02_repacked.h5')
+    'h5cloud/h5repack/ATL03_20181120182818_08110112_006_02_repacked.h5'
+    
+    # Get a S3 link for a format by index
+    s3links.get_link_by_fileid('original', 0)
+    'h5cloud/original/ATL03_20181120182818_08110112_006_02.h5'
     """
     
     def __init__(self):
