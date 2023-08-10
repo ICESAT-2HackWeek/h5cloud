@@ -17,6 +17,25 @@ This is in contrast to raster data, where cloud-optimized GeoTIFFs are organized
 ## Sample Data
 ATL03 files used for testing were selected to maximize baseline ATL03 filesize, and are available at [s3://is2-cloud-experiments](s3://is2-cloud-experiments).
 
+## Benchmark table
+
+Reported times to read in a certain file format using a given library.
+Each file format (the columns in the table below) has a corresponding Jupyter
+Notebook (.ipynb file) in the [`notebooks/`](./notebooks/) folder that was used to generate
+the results.
+
+| Library \ File Format | Original HDF5 | h5repack | GeoParquet |
+|--|--|--|--|
+| 1a - h5py                              |   |   | x |
+| 1b - gedi_subsetter H5DataFrame        |   |   | x |
+| 2 - xarray via h5netcdf engine         |   |   | x |
+| 3 - h5coro                             |   |   | x |
+| 4a - geopandas via pyogrio/GDAL driver | x | x |   |
+| 4b - geopandas via parquet driver      | x | x |   |
+
+Key:
+- x = File format not supported by library.
+
 ## Resources
 - [h5coro](https://github.com/ICESat2-SlideRule/h5coro)
 - [icepyx](https://icepyx.readthedocs.io/en/latest/index.html)
