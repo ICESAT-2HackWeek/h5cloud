@@ -23,9 +23,9 @@ class XarrayArrMean(H5Test):
             h_ph_values = []
             for dataset in datasets:
                 h_ph_values = np.append(h_ph_values, dataset['h_ph'].values)
-            return np.mean(h_ph_values).compute()
+            return np.mean(h_ph_values)
         else:
             s3_fileset = [self.s3_fs.open(file) for file in self.files]
             xrds = xr.open_mfdataset(s3_fileset, group=group, combine='by_coords', engine='h5netcdf')
-            final_xr_array = xrds['h_ph']
-            return np.mean(final_xr_array).compute()
+            h_ph_values = xrds['h_ph']
+            return float(np.mean(h_ph_values).values)

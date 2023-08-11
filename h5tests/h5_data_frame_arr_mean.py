@@ -2,6 +2,7 @@ from .h5test import H5Test, timer_decorator
 import h5py
 import pandas as pd
 import subprocess
+import numpy as np
 
 try:
     from gedi_subset.h5frame import H5DataFrame
