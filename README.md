@@ -27,7 +27,7 @@ This project includes benchmark tests in 'h5tests/` for the libraries listed as 
 
 Notebooks exist in the [`notebooks/`](./notebooks/) folder for generating those formats listed.
 
-| **Library | File Format**                        | **Original HDF4** | **h5repack** | **kerchunk original** | **kerchunk repacked** | **GeoParquet** | **Flatgeobuf** |
+| **Library/File Format**                        | **Original HDF4** | **h5repack** | **kerchunk original** | **kerchunk repacked** | **GeoParquet** | **Flatgeobuf** |
 | -------------------------------------- | ----------------- | ------------ | --------------------- | --------------------- | -------------- | -------------- |
 | 1a - h5py                              |                   |              |                       | n/a                   | n/a            | n/a            |
 | 1b - gedi\_subsetter H5DataFrame       |                   |              |                       | n/a                   | n/a            | n/a            |
