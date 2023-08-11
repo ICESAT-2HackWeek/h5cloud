@@ -27,14 +27,14 @@ This project includes benchmark tests in 'h5tests/` for the libraries listed as 
 
 Notebooks exist in the [`notebooks/`](./notebooks/) folder for generating those formats listed.
 
-| Library \ File Format | Original HDF5 | h5repack | GeoParquet | kerchunk original | kerchunk repacked |
-|--|--|--|--|--|--|
-| 1a - h5py                              |   |   | n/a | n/a | n/a |  
-| 1b - gedi_subsetter H5DataFrame        |   |   | n/a | n/a | n/a |
-| 2 - xarray via h5netcdf engine         |   |   | n/a |   |   |
-| 3 - h5coro                             |   |   | n/a | n/a | n/a |
-| 4a - geopandas via pyogrio/GDAL driver | n/a | n/a |   | n/a | n/a |
-| 4b - geopandas via parquet driver      | n/a | n/a |   | n/a | n/a |
+| **Library | File Format**                        | **Original HDF4** | **h5repack** | **kerchunk original** | **kerchunk repacked** | **GeoParquet** | **Flatgeobuf** |
+| -------------------------------------- | ----------------- | ------------ | --------------------- | --------------------- | -------------- | -------------- |
+| 1a - h5py                              |                   |              |                       | n/a                   | n/a            | n/a            |
+| 1b - gedi\_subsetter H5DataFrame       |                   |              |                       | n/a                   | n/a            | n/a            |
+| 2 - xarray via h5netcdf engine         |                   |              |                       |                       |                | n/a            |
+| 3 - h5coro                             |                   |              |                       | n/a                   | n/a            | n/a            |
+| 4a - geopandas via pyogrio/GDAL driver |                   | n/a          | n/a                   | n/a                   | n/a            |                |
+| 4b - geopandas via parquet driver      |                   | n/a          | n/a                   | n/a                   | n/a            |                |
 
 Key:
 - n/a = Not applicable as the file format is not supported by library.
