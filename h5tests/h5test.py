@@ -24,18 +24,24 @@ def timer_decorator(func):
         end_time = time.time()
         execution_time = end_time - start_time
         # Call the store method here
-        s3_key = f"{self.results_directory}/{generate_timestamp()}_{self.name}_{self.data_format}_results.csv"
-        self.store(run_time=execution_time, result=result, bucket=self.bucket, s3_key=s3_key)
+        if self.store_results:
+            results_key = f"{generate_timestamp()}_{self.name}_{self.data_format}_results.csv"
+            s3_key = f"{self.results_directory}/{results_key}"
+            self.store(run_time=execution_time, result=result, bucket=self.bucket, s3_key=s3_key)
         return result, execution_time
     return wrapper
 
 class H5Test:
-    def __init__(self, data_format: str):
+    def __init__(self, data_format: str, files=None, store_results=True):
         self.name = self.__class__.__name__
         self.data_format = data_format
-        self.files = S3Links().get_links_by_format(data_format)
+        if files:
+            self.files = files
+        else:
+            self.files = S3Links().get_links_by_format(data_format)
         self.s3_client = boto3.client('s3')  # Ensure AWS credentials are configured
         self.s3_fs = s3fs.S3FileSystem(anon=False)
+        self.store_results = store_results
         self.bucket = "nasa-cryo-scratch"
         self.results_directory = "h5cloud/benchmark_results"        
 
