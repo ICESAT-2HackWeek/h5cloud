@@ -9,7 +9,7 @@ current = os.path.abspath('..')
 sys.path.append(current)
 from helpers.geospatial import get_subset_region, get_subset_indices
 
-class H5pyArrSubset(H5Test):
+class H5pyArrSubsetMean(H5Test):
     
     def __init__(self, data_format, geometry=None):
         """
@@ -46,4 +46,4 @@ class H5pyArrSubset(H5Test):
                     len(final_h5py_array),
                     data, axis=None
                 )
-        return len(final_h5py_array)    
+        return np.mean(final_h5py_array)    
