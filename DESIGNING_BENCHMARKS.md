@@ -41,6 +41,7 @@ For this project, we are considering the following options:
 
 * Storing results - how do you want to store results and parse them later? For this project, we stored them on S3 and used a python script to generate plots.
 * End to end testing vs low level profiling of libraries. You may find that before or after end to end testing you need to understand what types of operations are being taken by the libraries you are testing, especially when results are different from what you expected. For example, you may want to use `S3FS_LOGGING_LEVEL=DEBUG` when using s3fs to understand what types of requests are being made to S3.
+* CACHING 🤯 - Caching can happen at many levels - from data service (e.g. S3) to HTTP Caching (e.g. Cloudfront) to library/local server caching. 
 
 
 ## Additional Science Workflow Considerations
