@@ -30,15 +30,15 @@ the results.
 
 | Library \ File Format | Original HDF5 | h5repack | GeoParquet |
 |--|--|--|--|
-| 1a - h5py                              |   |   | x |
-| 1b - gedi_subsetter H5DataFrame        |   |   | x |
-| 2 - xarray via h5netcdf engine         |   |   | x |
-| 3 - h5coro                             |   |   | x |
-| 4a - geopandas via pyogrio/GDAL driver | x | x |   |
-| 4b - geopandas via parquet driver      | x | x |   |
+| 1a - h5py                              |   |   | n/a |
+| 1b - gedi_subsetter H5DataFrame        |   |   | n/a |
+| 2 - xarray via h5netcdf engine         |   |   | n/a |
+| 3 - h5coro                             |   |   | n/a |
+| 4a - geopandas via pyogrio/GDAL driver | n/a | n/a |   |
+| 4b - geopandas via parquet driver      | n/a | n/a |   |
 
 Key:
-- x = File format not supported by library.
+- n/a = Not applicable as the file format is not supported by library.
 
 ## Resources
 - [ICESat-2 Hackweek Data Access Tutorials](https://icesat-2-2023.hackweek.io/tutorials/data-access-and-format/index.html)
