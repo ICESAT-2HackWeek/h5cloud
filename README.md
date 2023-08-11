@@ -1,5 +1,11 @@
 # H5Cloud - Cloud-Optimized Access of Hierarchical ICESat-2 Photon Data
 
+## Quickstart
+Launch on [CryoCloud](https://cryointhecloud.com). Hosted on AWS US West2 region.
+Requires [CryoCloud user account](https://book.cryointhecloud.com/content/Getting_Started.html).
+
+[![CryoCloud JupyterHub](https://img.shields.io/badge/launch-CryoCloud-lightblue?logo=jupyter)](https://hub.cryointhecloud.com/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2FICESAT-2HackWeek%2Fh5cloud&urlpath=lab%2Ftree%2Fh5cloud%2FTest_workflow.ipynb&branch=main)
+
 ## Collaborators
 Aimee Barciauskas, Development Seed <br>
 Andy Barrett, NSIDC <br>
@@ -17,7 +23,7 @@ ICESat-2 photon-data is formatted as HDF5 files, which provide many advantages f
 However, ICESat-2 granules are frequently over a larger spatial extent than is needed for scientific workflows, meaning users must read in the full ATL03 HDF5 file to geolocate the data, then subset to a given area of interest. Applications like EarthData and NSIDC data portals have simplified this process for users by allowing them to provide a bounding box and only returning the subset data. Still, because HDF5 files are serialized, the original ATL03 H5 file must be read fully into memory by the cloud provider.
 
 This is in contrast to raster data, where cloud-optimized GeoTIFFs are organized internally such that it is easy to access only a specific subset of the total area using HTTP GET range requests. A similar capability for ICESat-2 along-track photon data would provide measurable read performance improvements for cloud data providers and local data users alike. The current aims of this Hackweek group are to benchmark current methods of accessing/subsetting ATL03 data from a public cloud data source (AWS S3), investigate methods of repacking photon data, and determine how libraries like [kerchunk](https://fsspec.github.io/kerchunk/) can be used for more efficient requesting of data from specific along-track locations.
- 
+
 ## Sample Data
 ATL03 files used for testing were selected to maximize baseline ATL03 filesize, and are available at [s3://is2-cloud-experiments](s3://is2-cloud-experiments).
 
@@ -54,7 +60,7 @@ Key:
 
 ### `contributors`
 Each team member has it's own folder under contributors, where he/she can
-work on their contribution. Having a dedicated folder for one-self helps to 
+work on their contribution. Having a dedicated folder for one-self helps to
 prevent conflicts when merging with master.
 
 ### `notebooks`
@@ -63,4 +69,3 @@ here.
 
 ### `scripts`
 Helper utilities that are shared with the team
-
