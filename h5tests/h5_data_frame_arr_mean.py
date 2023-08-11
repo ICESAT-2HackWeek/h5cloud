@@ -2,6 +2,7 @@ from .h5test import H5Test, timer_decorator
 import h5py
 import pandas as pd
 import subprocess
+import numpy as np
 
 try:
     from gedi_subset.h5frame import H5DataFrame
@@ -11,7 +12,7 @@ except ImportError:
     ])
     from gedi_subset.h5frame import H5DataFrame
 
-class H5DataFrameArrLen(H5Test):
+class H5DataFrameArrMean(H5Test):
     @timer_decorator
     def run(self):
         group = '/gt1l/heights'
@@ -22,4 +23,4 @@ class H5DataFrameArrLen(H5Test):
                 df = H5DataFrame(h5[f"{group[1:]}"])
                 dataframes.append(df[variable])
         final_dataframe: pd.Series = pd.concat(objs=dataframes, axis="index")
-        return len(final_dataframe)
+        return np.mean(final_dataframe)
