@@ -23,19 +23,18 @@ ATL03 files used for testing were selected to maximize baseline ATL03 filesize, 
 
 ## Benchmark table
 
-Reported times to read in a certain file format using a given library.
-Each file format (the columns in the table below) has a corresponding Jupyter
-Notebook (.ipynb file) in the [`notebooks/`](./notebooks/) folder that was used to generate
-the results.
+This project includes benchmark tests in 'h5tests/` for the libraries listed as rows below. Tests should be run against the formats listed as columns in the table below.
 
-| Library \ File Format | Original HDF5 | h5repack | GeoParquet |
-|--|--|--|--|
-| 1a - h5py                              |   |   | n/a |
-| 1b - gedi_subsetter H5DataFrame        |   |   | n/a |
-| 2 - xarray via h5netcdf engine         |   |   | n/a |
-| 3 - h5coro                             |   |   | n/a |
-| 4a - geopandas via pyogrio/GDAL driver | n/a | n/a |   |
-| 4b - geopandas via parquet driver      | n/a | n/a |   |
+Notebooks exist in the [`notebooks/`](./notebooks/) folder for generating those formats listed.
+
+| Library \ File Format | Original HDF5 | h5repack | GeoParquet | kerchunk original | kerchunk repacked |
+|--|--|--|--|--|--|
+| 1a - h5py                              |   |   | n/a | n/a | n/a |  
+| 1b - gedi_subsetter H5DataFrame        |   |   | n/a | n/a | n/a |
+| 2 - xarray via h5netcdf engine         |   |   | n/a |   |   |
+| 3 - h5coro                             |   |   | n/a | n/a | n/a |
+| 4a - geopandas via pyogrio/GDAL driver | n/a | n/a |   | n/a | n/a |
+| 4b - geopandas via parquet driver      | n/a | n/a |   | n/a | n/a |
 
 Key:
 - n/a = Not applicable as the file format is not supported by library.
