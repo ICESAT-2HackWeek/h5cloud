@@ -9,6 +9,8 @@ Luis Lopez, NSIDC <br>
 Alex Mandel, Development Seed <br>
 Jonathan Markel, UT Austin <br>
 Suman Shekhar, Rutgers University <br>
+Rachel Wegener, University of Maryland, College Park <br>
+JP Swinski, NASA/GSFC <br>
 
 ## The Problem
 ICESat-2 photon-data is formatted as HDF5 files, which provide many advantages for scientific applications including being self-describing and able to store heterogenous data.
@@ -28,15 +30,15 @@ the results.
 
 | Library \ File Format | Original HDF5 | h5repack | GeoParquet |
 |--|--|--|--|
-| 1a - h5py                              |   |   | x |
-| 1b - gedi_subsetter H5DataFrame        |   |   | x |
-| 2 - xarray via h5netcdf engine         |   |   | x |
-| 3 - h5coro                             |   |   | x |
-| 4a - geopandas via pyogrio/GDAL driver | x | x |   |
-| 4b - geopandas via parquet driver      | x | x |   |
+| 1a - h5py                              |   |   | n/a |
+| 1b - gedi_subsetter H5DataFrame        |   |   | n/a |
+| 2 - xarray via h5netcdf engine         |   |   | n/a |
+| 3 - h5coro                             |   |   | n/a |
+| 4a - geopandas via pyogrio/GDAL driver | n/a | n/a |   |
+| 4b - geopandas via parquet driver      | n/a | n/a |   |
 
 Key:
-- x = File format not supported by library.
+- n/a = Not applicable as the file format is not supported by library.
 
 ## Resources
 - [ICESat-2 Hackweek Data Access Tutorials](https://icesat-2-2023.hackweek.io/tutorials/data-access-and-format/index.html)
@@ -47,6 +49,7 @@ Key:
 - [h5py](https://docs.h5py.org/en/stable/index.html)
 - [icepyx](https://icepyx.readthedocs.io/en/latest/index.html)
 - [xarray](https://docs.xarray.dev/en/v2023.06.0)
+- [xarray-h5coro-backend](https://github.com/ICESAT-2HackWeek/xarray)
 
 ## Folders
 
