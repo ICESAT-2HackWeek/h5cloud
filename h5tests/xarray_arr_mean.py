@@ -3,7 +3,7 @@ import fsspec
 import xarray as xr
 import numpy as np
 
-class XarrayArrLen(H5Test):
+class XarrayArrMean(H5Test):
     def open_reference_ds(self, file):
         fs = fsspec.filesystem(
             'reference', 
@@ -23,9 +23,9 @@ class XarrayArrLen(H5Test):
             h_ph_values = []
             for dataset in datasets:
                 h_ph_values = np.append(h_ph_values, dataset['h_ph'].values)
-            return len(h_ph_values)
+            return np.mean(h_ph_values).compute()
         else:
             s3_fileset = [self.s3_fs.open(file) for file in self.files]
             xrds = xr.open_mfdataset(s3_fileset, group=group, combine='by_coords', engine='h5netcdf')
-        final_xr_array = xrds['h_ph']
-        return len(final_xr_array)
+            final_xr_array = xrds['h_ph']
+            return np.mean(final_xr_array).compute()

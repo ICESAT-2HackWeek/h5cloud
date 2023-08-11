@@ -2,7 +2,7 @@ from .h5test import H5Test, timer_decorator
 import h5py
 import numpy as np
 
-class H5pyArrLen(H5Test):
+class H5pyArrMean(H5Test):
     @timer_decorator
     def run(self):
         final_h5py_array = []  
@@ -18,4 +18,4 @@ class H5pyArrLen(H5Test):
                     len(final_h5py_array),
                     data, axis=None
                 )
-        return len(final_h5py_array)
+        return np.mean(final_h5py_array)
