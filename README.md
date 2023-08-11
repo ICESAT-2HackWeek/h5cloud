@@ -9,6 +9,8 @@ Luis Lopez, NSIDC <br>
 Alex Mandel, Development Seed <br>
 Jonathan Markel, UT Austin <br>
 Suman Shekhar, Rutgers University <br>
+Rachel Wegener, University of Maryland, College Park <br>
+JP Swinski, NASA/GSFC <br>
 
 ## The Problem
 ICESat-2 photon-data is formatted as HDF5 files, which provide many advantages for scientific applications including being self-describing and able to store heterogenous data.
@@ -47,6 +49,7 @@ Key:
 - [h5py](https://docs.h5py.org/en/stable/index.html)
 - [icepyx](https://icepyx.readthedocs.io/en/latest/index.html)
 - [xarray](https://docs.xarray.dev/en/v2023.06.0)
+- [xarray-h5coro-backend](https://github.com/ICESAT-2HackWeek/xarray)
 
 ## Folders
 
