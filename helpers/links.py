@@ -4,7 +4,7 @@ import re
 
 import s3fs
 
-S3LINK = "s3://nasa-cryo-scratch/h5cloud/"
+S3LINK = "s3://nasa-cryo-permanent/h5cloud/"
 S3FILELINKS = Path("../helpers/s3filelinks.json")
 
 
