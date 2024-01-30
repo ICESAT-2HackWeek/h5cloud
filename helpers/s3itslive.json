@@ -1,0 +1,50 @@
+{
+    "flatgeobuf": {
+
+    },
+    "flatgeobuf_no_sindex": {
+
+    },
+    "geoparquet": {
+
+    },
+    "atl03-bigsize-original": {
+        "ATL03_20181120182818_08110112_006_02.h5": "s3://its-live-data/cloud-experiments/h5cloud/atl03/big/original/ATL03_20181120182818_08110112_006_02.h5",
+        "ATL03_20190219140808_08110212_006_02.h5": "s3://its-live-data/cloud-experiments/h5cloud/atl03/big/original/ATL03_20190219140808_08110212_006_02.h5",
+        "ATL03_20200217204710_08110612_006_01.h5": "s3://its-live-data/cloud-experiments/h5cloud/atl03/big/original/ATL03_20200217204710_08110612_006_01.h5",
+        "ATL03_20211114142614_08111312_006_01.h5": "s3://its-live-data/cloud-experiments/h5cloud/atl03/big/original/ATL03_20211114142614_08111312_006_01.h5",
+        "ATL03_20230211164520_08111812_006_01.h5": "s3://its-live-data/cloud-experiments/h5cloud/atl03/big/original/ATL03_20230211164520_08111812_006_01.h5"
+    },
+    "atl03-bigsize-h5repack": {
+        "ATL03_20181120182818_08110112_006_02_repacked.h5": "s3://its-live-data/cloud-experiments/h5cloud/atl03/big/repacked/ATL03_20181120182818_08110112_006_02_repacked.h5",
+        "ATL03_20190219140808_08110212_006_02_repacked.h5": "s3://its-live-data/cloud-experiments/h5cloud/atl03/big/repacked/ATL03_20190219140808_08110212_006_02_repacked.h5",
+        "ATL03_20200217204710_08110612_006_01_repacked.h5": "s3://its-live-data/cloud-experiments/h5cloud/atl03/big/repacked/ATL03_20200217204710_08110612_006_01_repacked.h5",
+        "ATL03_20211114142614_08111312_006_01_repacked.h5": "s3://its-live-data/cloud-experiments/h5cloud/atl03/big/repacked/ATL03_20211114142614_08111312_006_01_repacked.h5",
+        "ATL03_20230211164520_08111812_006_01_repacked.h5": "s3://its-live-data/cloud-experiments/h5cloud/atl03/big/repacked/ATL03_20230211164520_08111812_006_01_repacked.h5"
+    },
+    "atl03-kerchunk-bigsize-original": {
+        
+    },
+    "atl03-kerchunk-bigsize-repacked": {
+ },
+    "atl03-midsize-original": {
+        "ATL03_20191225111315_13680501_006_01.h5": "s3://its-live-data/cloud-experiments/h5cloud/atl03/average/original/ATL03_20191225111315_13680501_006_01.h5",
+        "ATL03_20200922221235_13680801_006_02.h5": "s3://its-live-data/cloud-experiments/h5cloud/atl03/average/original/ATL03_20200922221235_13680801_006_02.h5",
+        "ATL03_20220620155150_13681501_006_01.h5": "s3://its-live-data/cloud-experiments/h5cloud/atl03/average/original/ATL03_20220620155150_13681501_006_01.h5",
+        "ATL03_20220919113142_13681601_006_01.h5": "s3://its-live-data/cloud-experiments/h5cloud/atl03/average/original/ATL03_20220919113142_13681601_006_01.h5",
+        "ATL03_20230618223036_13681901_006_01.h5": "s3://its-live-data/cloud-experiments/h5cloud/atl03/average/original/ATL03_20230618223036_13681901_006_01.h5"
+    },
+    "atl03-midsize-h5repack":{
+        "ATL03_20191225111315_13680501_006_01.h5": "s3://its-live-data/cloud-experiments/h5cloud/atl03/average/repacked/ATL03_20191225111315_13680501_006_01.h5",
+        "ATL03_20200922221235_13680801_006_02.h5": "s3://its-live-data/cloud-experiments/h5cloud/atl03/average/repacked/ATL03_20200922221235_13680801_006_02.h5",
+        "ATL03_20220620155150_13681501_006_01.h5": "s3://its-live-data/cloud-experiments/h5cloud/atl03/average/repacked/ATL03_20220620155150_13681501_006_01.h5",
+        "ATL03_20220919113142_13681601_006_01.h5": "s3://its-live-data/cloud-experiments/h5cloud/atl03/average/repacked/ATL03_20220919113142_13681601_006_01.h5",
+        "ATL03_20230618223036_13681901_006_01.h5": "s3://its-live-data/cloud-experiments/h5cloud/atl03/average/repacked/ATL03_20230618223036_13681901_006_01.h5"
+    },
+    "atl03-kerchunk-midsize-original": {
+        
+    },
+    "atl03-kerchunk-midsize-repacked": {
+        
+    }
+}

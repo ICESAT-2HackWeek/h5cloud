@@ -82,7 +82,7 @@ def timer_decorator(func):
 
 class H5Test:
     def __init__(
-        self, data_format: str, files=None, store_results=True, logs_regex=None
+        self, data_format: str, files=None, store_results=True, logs_regex=None, anon_access=False, source="cryocloud"
     ):
         self.name = self.__class__.__name__
         self.data_format = data_format
@@ -90,9 +90,13 @@ class H5Test:
         if files:
             self.files = files
         else:
-            self.files = S3Links().get_links_by_format(data_format)
-        self.s3_client = boto3.client("s3")  # Ensure AWS credentials are configured
-        self.s3_fs = s3fs.S3FileSystem(anon=False)
+            if source == "cryocloud":
+                links = "../helpers/s3filelinks.json"
+            else:
+                links = "../helpers/itslivelinks.json"
+            self.files = S3Links(links).get_links_by_format(data_format)
+        self.s3_fs = s3fs.S3FileSystem(anon=anon_access)
+        
         self.store_results = store_results
         self.bucket = "nasa-cryo-persistent"
         self.results_directory = "h5cloud/benchmark_results"
@@ -115,6 +119,8 @@ class H5Test:
         :param bucket: The name of the S3 bucket where the CSV will be uploaded
         :param s3_key: The S3 key (filename) where the CSV will be stored
         """
+        self.s3_client = boto3.client("s3")  # Ensure AWS credentials are configured
+
         # Create a CSV in-memory
         csv_buffer = StringIO()
         csv_writer = csv.writer(csv_buffer)

@@ -5,7 +5,6 @@ import re
 import s3fs
 
 S3LINK = "s3://nasa-cryo-permanent/h5cloud/"
-S3FILELINKS = Path("../helpers/s3filelinks.json")
 
 
 class S3Links:
@@ -41,9 +40,11 @@ class S3Links:
     'h5cloud/original/ATL03_20181120182818_08110112_006_02.h5'
     """
 
-    def __init__(self):
-        self.json_file = S3FILELINKS
-        self.table = load_s3testfile(S3FILELINKS)
+    def __init__(self, file="../helpers/s3filelinks.json"):
+        self.S3FILELINKS = Path(file)
+
+        self.json_file = self.S3FILELINKS 
+        self.table = load_s3testfile(self.S3FILELINKS)
         self.formats = list(self.table.keys())
 
     def get_links_by_format(self, file_format):
@@ -86,9 +87,9 @@ class S3Links:
             print("Differences between self.table and S3 buckets: updating self.table")
             self.table = filelinks
             self.formats = list(self.table.keys())
-            response = input(f"Update {S3FILELINKS} (y or n)?")
+            response = input(f"Update {self.S3FILELINKS} (y or n)?")
             if response.lower() == "y":
-                print(f"Updating {S3FILELINKS}")
+                print(f"Updating {self.S3FILELINKS}")
                 write_s3links(filelinks)
 
 

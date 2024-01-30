@@ -35,14 +35,9 @@ class XarrayArrMean(H5Test):
                 fsspec_params = io_params["fsspec_params"]
             if "h5py_params" in io_params:
                 h5py_params = io_params["h5py_params"]
+                print(h5py_params)
 
             s3_fileset = [self.s3_fs.open(file, **fsspec_params) for file in self.files]
-            xrds = xr.open_mfdataset(
-                s3_fileset,
-                group=group,
-                combine="by_coords",
-                engine="h5netcdf",
-                **h5py_params
-            )
-            h_ph_values = xrds["h_ph"]
+            xrds = xr.open_mfdataset(s3_fileset, group=group, combine='by_coords', engine='h5netcdf', **h5py_params)
+            h_ph_values = xrds['h_ph']
             return float(np.mean(h_ph_values).values)
