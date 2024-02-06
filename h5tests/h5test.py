@@ -13,15 +13,27 @@ import s3fs
 current = os.path.abspath("..")
 sys.path.append(current)
 
-from helpers.links import S3Links
+
+import csv
+import logging
+import os
+import pathlib
+import re
+import time
+from datetime import datetime
+from io import StringIO
+
+import boto3
+import fsspec
+import h5py
+import numpy as np
+import pandas as pd
+import s3fs
+import xarray as xr
+from tqdm import tqdm
 
 
 class RegexFilter(logging.Filter):
-    """
-    This class will filter a logstream based on a regex expression
-    The idea is to target a particular library as they usually have a consistent signature.
-    """
-
     def __init__(self, regex_pattern):
         super(RegexFilter, self).__init__()
         self.regex_pattern = re.compile(regex_pattern)
@@ -34,25 +46,45 @@ class RegexFilter(logging.Filter):
 def timer_decorator(func):
     """
     A decorator to measure the execution time of the wrapped function.
-    It also writes logs to local disk if a regex expression is used in the
-    subclass instance.
     """
 
+    def fsspec_stats(log_file):
+        with open(log_file, "r") as input_file:
+            num_requests = 0
+            total_requested_bytes = 0
+            for line in input_file:
+                # Strip leading and trailing whitespaces from the line
+
+                try:
+                    read_range = line.split("read:")[1].split(" - ")
+                    request_size = int(read_range[1]) - int(read_range[0])
+                    total_requested_bytes += request_size
+                    num_requests += 1
+                except Exception:
+                    pass
+            stats = {
+                "total_reqs": num_requests,
+                "total_reqs_bytes": total_requested_bytes,
+                "avg_req_size": int(round(total_requested_bytes / num_requests, 2)),
+            }
+        return stats
+
     def __setup_logging(self, tstamp):
-        log_filename = f"logs/{self.data_format}-{tstamp}.log"
+        pathlib.Path(f"./logs").mkdir(exist_ok=True)
+        self.log_filename = f"logs/{self.data_format}-{tstamp}.log"
         logger = logging.getLogger("fsspec")
         logger.setLevel(logging.DEBUG)
         self.regex_filter = RegexFilter(self.logs_regex)
         # add regerx to root logger
-        logging.getLogger().addFilter(self.regex_filter)
-        self._file_handler = logging.FileHandler(log_filename)
+        logging.getLogger("fsspec").addFilter(self.regex_filter)
+        self._file_handler = logging.FileHandler(self.log_filename)
         self._file_handler.setLevel(logging.DEBUG)
         # Add the handler to the root logger
-        logging.getLogger().addHandler(self._file_handler)
+        logging.getLogger("fsspec").addHandler(self._file_handler)
 
     def __turnoff_logging(self):
-        logging.getLogger().removeFilter(self.regex_filter)
-        logging.getLogger().removeHandler(self._file_handler)
+        logging.getLogger("fsspec").removeFilter(self.regex_filter)
+        logging.getLogger("fsspec").removeHandler(self._file_handler)
         self._file_handler.close()
 
     def wrapper(self, *args, **kwargs):
@@ -66,72 +98,100 @@ def timer_decorator(func):
             __turnoff_logging(self)
         execution_time = end_time - start_time
         # Call the store method here
+        self.io_stats = fsspec_stats(self.log_filename)
         if self.store_results:
             results_key = f"{tstamp}_{self.name}_{self.data_format}_results.csv"
-            s3_key = f"{self.results_directory}/{results_key}"
-            self.store(
-                run_time=execution_time,
-                result=result,
-                bucket=self.bucket,
-                s3_key=s3_key,
-            )
-        return result, execution_time
+            self.store(run_time=execution_time, result=result, file_name=results_key)
+        return result, execution_time, self.log_filename, self.io_stats
 
     return wrapper
 
 
 class H5Test:
     def __init__(
-        self, data_format: str, files=None, store_results=True, logs_regex=None, anon_access=False, source="cryocloud"
+        self,
+        data_format: str,
+        files=[],
+        store_results=True,
+        logs_regex=r"<File-like object S3FileSystem, .*?>\s*(read: \d+ - \d+)",
     ):
         self.name = self.__class__.__name__
+        self.io_stats = {}
+        self.log_filename = ""
         self.data_format = data_format
         self.logs_regex = logs_regex
-        if files:
+        if len(files) > 0:
             self.files = files
         else:
-            if source == "cryocloud":
-                links = "../helpers/s3filelinks.json"
-            else:
-                links = "../helpers/itslivelinks.json"
-            self.files = S3Links(links).get_links_by_format(data_format)
-        self.s3_fs = s3fs.S3FileSystem(anon=anon_access)
-        
+            raise ValueError("We need at least 1 ATL03 granule URL hosted in S3")
+
         self.store_results = store_results
-        self.bucket = "nasa-cryo-persistent"
-        self.results_directory = "h5cloud/benchmark_results"
+
+        if files[0].startswith("s3://nasa-cryo-persistent"):
+            self.s3_client = boto3.client("s3")  #
+            self.annon_access = False
+            self.results_bucket = "s3://nasa-cryo-persistent/"
+            self.results_directory = "h5cloud/benchmark_results"
+            self.results_store_type = "S3"
+        else:
+            self.annon_access = True
+            self.results_path = "results"
+            pathlib.Path(f"./{self.results_path}").mkdir(exist_ok=True)
+            self.results_store_type = "Local"
+
+        self.s3_fs = s3fs.S3FileSystem(anon=self.annon_access)
 
     @timer_decorator
-    def run(self, io_params={}):
-        """
-        When implemented we can pass io_params as runtime tweaks to the underlying
-        libraries e.g. fsspec.
-        """
-
+    def run(self, io_params, dataset, variable):
         raise NotImplementedError("The run method has not been implemented")
 
-    def store(self, run_time: float, result: str, bucket: str, s3_key: str):
+    def store(self, run_time: float, result: str, file_name: str):
         """
         Store test results to an S3 bucket as a CSV file.
-
         :param run_time: The runtime of the test
         :param result: The result of the test
-        :param bucket: The name of the S3 bucket where the CSV will be uploaded
-        :param s3_key: The S3 key (filename) where the CSV will be stored
+        :param file_name: file to store the results
         """
-        self.s3_client = boto3.client("s3")  # Ensure AWS credentials are configured
-
         # Create a CSV in-memory
         csv_buffer = StringIO()
         csv_writer = csv.writer(csv_buffer)
-        csv_writer.writerow(["Name", "Data Format", "Run Time", "Result"])  # Headers
-        csv_writer.writerow([self.name, self.data_format, run_time, result])
+        csv_writer.writerow(
+            [
+                "Name",
+                "Data Format",
+                "Run Time",
+                "Result",
+                "Access Log",
+                "Total Bytes Tranferred",
+                "Total Requests",
+            ]
+        )  # Headers
+        csv_writer.writerow(
+            [
+                self.name,
+                self.data_format,
+                run_time,
+                result,
+                self.log_filename,
+                self.io_stats["total_reqs_bytes"],
+                self.io_stats["total_reqs"],
+            ]
+        )
 
         # Reset the buffer's position to the beginning
         csv_buffer.seek(0)
 
         # Upload the CSV to S3
-        self.s3_client.put_object(Bucket=bucket, Key=s3_key, Body=csv_buffer.getvalue())
+        if self.results_store_type == "S3":
+            # assumes s3 can write to bucket
+            self.s3_client.put_object(
+                Bucket=self.results_bucket,
+                Key=f"{self.results_directory}/{file_name}",
+                Body=csv_buffer.getvalue(),
+            )
+        else:
+            with open(f"{self.results_path}/{file_name}", "w", newline="") as csv_file:
+                csv_file.write(csv_buffer.getvalue())
 
 
 ## Example subclass

@@ -109,3 +109,7 @@ venv.bak/
 *.hdf5
 *.nc
 *.tif
+
+*.log
+notebooks/logs
+notebooks/results
