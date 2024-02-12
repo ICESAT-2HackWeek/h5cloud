@@ -1,16 +1,16 @@
 import os
 import sys
 
-from .h5test import H5Test, timer_decorator
 import h5py
 import numpy as np
+from h5test import H5Test, fsspec_logging_decorator, timer_decorator
 
-current = os.path.abspath('..')
+current = os.path.abspath("..")
 sys.path.append(current)
-from helpers.geospatial import get_subset_region, get_subset_indices
+from helpers.geospatial import get_subset_indices, get_subset_region
+
 
 class H5pyArrSubsetMean(H5Test):
-    
     def __init__(self, data_format, geometry=None):
         """
         geometry : path to geojson file containing geometry
@@ -18,32 +18,34 @@ class H5pyArrSubsetMean(H5Test):
         """
         super().__init__(data_format)
         self.bounds = get_subset_region(geometry)
-        
+
     @timer_decorator
-    def run(self):
-        final_h5py_array = []  
+    @fsspec_logging_decorator
+    def run(self, io_params={}, dataset="/gt1l/heights", variable="h_ph"):
+        final_h5py_array = []
         # TODO: Do we need to make this configurable or consistent?
-        group = '/gt1l/heights'
-        variable = 'h_ph'        
+        if "fsspec_params" in io_params:
+            fsspec_params = io_params["fsspec_params"]
+        if "h5py_params" in io_params:
+            h5py_params = io_params["h5py_params"]
         for file in self.files:
-            with h5py.File(self.s3_fs.open(file, 'rb')) as f:
-                
-                lat = f[f'{group}/lat_ph'][:]
-                lon = f[f'{group}/lon_ph'][:]
-        
+            with h5py.File(
+                self.s3_fs.open(file, "rb", **fsspec_params), **h5py_params
+            ) as f:
+                lat = f[f"{dataset}/lat_ph"][:]
+                lon = f[f"{dataset}/lon_ph"][:]
+
                 idx_start, idx_end = get_subset_indices(lat, lon, self.bounds)
-                
+
                 # Leaving this code here so that we can create a DataFrame or
-                # Dataset at a later date.  Suggest creating dict which can be 
+                # Dataset at a later date.  Suggest creating dict which can be
                 # passsed to xarray or (geo)pandas
                 # lat[idx_start:idx_end])
                 # lon[idx_start:idx_end])
 
-                data = f[f'{group}/{variable}'][idx_start:idx_end]
+                data = f[f"{dataset}/{variable}"][idx_start:idx_end]
                 # Need to test if using concatenate is faster
                 final_h5py_array = np.insert(
-                    final_h5py_array,
-                    len(final_h5py_array),
-                    data, axis=None
+                    final_h5py_array, len(final_h5py_array), data, axis=None
                 )
-        return np.mean(final_h5py_array)    
+        return np.mean(final_h5py_array)

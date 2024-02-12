@@ -1,8 +1,7 @@
 import fsspec
 import numpy as np
 import xarray as xr
-
-from h5test import H5Test, timer_decorator
+from h5test import H5Test, fsspec_logging_decorator
 
 
 class XarrayArrMean(H5Test):
@@ -19,6 +18,7 @@ class XarrayArrMean(H5Test):
         )
 
     @timer_decorator
+    @fsspec_logging_decorator
     def run(self, io_params={}, dataset="/gt1l/heights", variable="h_ph"):
         if "kerchunk" in self.data_format:
             datasets_ref = [
