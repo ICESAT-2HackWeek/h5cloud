@@ -10,14 +10,14 @@ dependencies:
   - numpy
   - s3fs
   - xarray
-  - fsspec
   - dask
   - distributed
   - geopandas
-  - h5py>3.9
+  - h5py>=3.10
   - zarr
   - kerchunk
   - h5netcdf
   - pip
   - pip:
-    - h5coro
+    - git+https://github.com/betolink/filesystem_spec.git
+    - git+https://github.com/ICESat2-SlideRule/h5coro.git
