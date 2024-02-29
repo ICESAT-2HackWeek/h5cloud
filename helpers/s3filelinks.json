@@ -1,52 +1,67 @@
 {
     "flatgeobuf": {
-        "ATL03_20181120182818_08110112_006_02.fgb": "s3://nasa-cryo-scratch/h5cloud/flatgeobuf/ATL03_20181120182818_08110112_006_02.fgb",
-        "ATL03_20190219140808_08110212_006_02.fgb": "s3://nasa-cryo-scratch/h5cloud/flatgeobuf/ATL03_20190219140808_08110212_006_02.fgb",
-        "ATL03_20200217204710_08110612_006_01.fgb": "s3://nasa-cryo-scratch/h5cloud/flatgeobuf/ATL03_20200217204710_08110612_006_01.fgb",
-        "ATL03_20211114142614_08111312_006_01.fgb": "s3://nasa-cryo-scratch/h5cloud/flatgeobuf/ATL03_20211114142614_08111312_006_01.fgb",
-        "ATL03_20230211164520_08111812_006_01.fgb": "s3://nasa-cryo-scratch/h5cloud/flatgeobuf/ATL03_20230211164520_08111812_006_01.fgb"
+
     },
     "flatgeobuf_no_sindex": {
-        "ATL03_20181120182818_08110112_006_02_no_sindex.fgb": "s3://nasa-cryo-scratch/h5cloud/flatgeobuf_no_sindex/ATL03_20181120182818_08110112_006_02_no_sindex.fgb",
-        "ATL03_20190219140808_08110212_006_02_no_sindex.fgb": "s3://nasa-cryo-scratch/h5cloud/flatgeobuf_no_sindex/ATL03_20190219140808_08110212_006_02_no_sindex.fgb",
-        "ATL03_20200217204710_08110612_006_01_no_sindex.fgb": "s3://nasa-cryo-scratch/h5cloud/flatgeobuf_no_sindex/ATL03_20200217204710_08110612_006_01_no_sindex.fgb",
-        "ATL03_20211114142614_08111312_006_01_no_sindex.fgb": "s3://nasa-cryo-scratch/h5cloud/flatgeobuf_no_sindex/ATL03_20211114142614_08111312_006_01_no_sindex.fgb",
-        "ATL03_20230211164520_08111812_006_01_no_sindex.fgb": "s3://nasa-cryo-scratch/h5cloud/flatgeobuf_no_sindex/ATL03_20230211164520_08111812_006_01_no_sindex.fgb"
+
     },
     "geoparquet": {
-        "ATL03_20181120182818_08110112_006_02.h5.gpq": "s3://nasa-cryo-scratch/h5cloud/geoparquet/ATL03_20181120182818_08110112_006_02.h5.gpq",
-        "ATL03_20190219140808_08110212_006_02.h5.gpq": "s3://nasa-cryo-scratch/h5cloud/geoparquet/ATL03_20190219140808_08110212_006_02.h5.gpq",
-        "ATL03_20200217204710_08110612_006_01.h5.gpq": "s3://nasa-cryo-scratch/h5cloud/geoparquet/ATL03_20200217204710_08110612_006_01.h5.gpq",
-        "ATL03_20211114142614_08111312_006_01.h5.gpq": "s3://nasa-cryo-scratch/h5cloud/geoparquet/ATL03_20211114142614_08111312_006_01.h5.gpq",
-        "ATL03_20230211164520_08111812_006_01.h5.gpq": "s3://nasa-cryo-scratch/h5cloud/geoparquet/ATL03_20230211164520_08111812_006_01.h5.gpq",
-        "['ATL03_20200217204710_08110612_006_01.h5'].gpq": "s3://nasa-cryo-scratch/h5cloud/geoparquet/['ATL03_20200217204710_08110612_006_01.h5'].gpq"
+
     },
-    "h5repack": {
-        "ATL03_20181120182818_08110112_006_02_repacked.h5": "s3://nasa-cryo-scratch/h5cloud/h5repack/ATL03_20181120182818_08110112_006_02_repacked.h5",
-        "ATL03_20190219140808_08110212_006_02_repacked.h5": "s3://nasa-cryo-scratch/h5cloud/h5repack/ATL03_20190219140808_08110212_006_02_repacked.h5",
-        "ATL03_20200217204710_08110612_006_01_repacked.h5": "s3://nasa-cryo-scratch/h5cloud/h5repack/ATL03_20200217204710_08110612_006_01_repacked.h5",
-        "ATL03_20211114142614_08111312_006_01_repacked.h5": "s3://nasa-cryo-scratch/h5cloud/h5repack/ATL03_20211114142614_08111312_006_01_repacked.h5",
-        "ATL03_20230211164520_08111812_006_01_repacked.h5": "s3://nasa-cryo-scratch/h5cloud/h5repack/ATL03_20230211164520_08111812_006_01_repacked.h5"
+    "atl03-bigsize-original": {
+        "ATL03_20181120182818_08110112_006_02.h5": "s3://nasa-cryo-persistent/h5cloud/atl03/big/original/ATL03_20181120182818_08110112_006_02.h5",
+        "ATL03_20190219140808_08110212_006_02.h5": "s3://nasa-cryo-persistent/h5cloud/atl03/big/original/ATL03_20190219140808_08110212_006_02.h5",
+        "ATL03_20200217204710_08110612_006_01.h5": "s3://nasa-cryo-persistent/h5cloud/atl03/big/original/ATL03_20200217204710_08110612_006_01.h5",
+        "ATL03_20211114142614_08111312_006_01.h5": "s3://nasa-cryo-persistent/h5cloud/atl03/big/original/ATL03_20211114142614_08111312_006_01.h5",
+        "ATL03_20230211164520_08111812_006_01.h5": "s3://nasa-cryo-persistent/h5cloud/atl03/big/original/ATL03_20230211164520_08111812_006_01.h5"
     },
-    "kerchunk-original": {
-        "original_ATL03_20181120182818_08110112_006_02.json": "s3://nasa-cryo-scratch/h5cloud/kerchunk-original/original_ATL03_20181120182818_08110112_006_02.json",
-        "original_ATL03_20190219140808_08110212_006_02.json": "s3://nasa-cryo-scratch/h5cloud/kerchunk-original/original_ATL03_20190219140808_08110212_006_02.json",
-        "original_ATL03_20200217204710_08110612_006_01.json": "s3://nasa-cryo-scratch/h5cloud/kerchunk-original/original_ATL03_20200217204710_08110612_006_01.json",
-        "original_ATL03_20211114142614_08111312_006_01.json": "s3://nasa-cryo-scratch/h5cloud/kerchunk-original/original_ATL03_20211114142614_08111312_006_01.json",
-        "original_ATL03_20230211164520_08111812_006_01.json": "s3://nasa-cryo-scratch/h5cloud/kerchunk-original/original_ATL03_20230211164520_08111812_006_01.json"
+    "atl03-bigsize-h5repack": {
+        "ATL03_20181120182818_08110112_006_02_repacked.h5": "s3://nasa-cryo-persistent/h5cloud/atl03/big/repacked/ATL03_20181120182818_08110112_006_02_repacked.h5",
+        "ATL03_20190219140808_08110212_006_02_repacked.h5": "s3://nasa-cryo-persistent/h5cloud/atl03/big/repacked/ATL03_20190219140808_08110212_006_02_repacked.h5",
+        "ATL03_20200217204710_08110612_006_01_repacked.h5": "s3://nasa-cryo-persistent/h5cloud/atl03/big/repacked/ATL03_20200217204710_08110612_006_01_repacked.h5",
+        "ATL03_20211114142614_08111312_006_01_repacked.h5": "s3://nasa-cryo-persistent/h5cloud/atl03/big/repacked/ATL03_20211114142614_08111312_006_01_repacked.h5",
+        "ATL03_20230211164520_08111812_006_01_repacked.h5": "s3://nasa-cryo-persistent/h5cloud/atl03/big/repacked/ATL03_20230211164520_08111812_006_01_repacked.h5"
     },
-    "kerchunk-repacked": {
-        "h5repack_ATL03_20181120182818_08110112_006_02_repacked.json": "s3://nasa-cryo-scratch/h5cloud/kerchunk-repacked/h5repack_ATL03_20181120182818_08110112_006_02_repacked.json",
-        "h5repack_ATL03_20190219140808_08110212_006_02_repacked.json": "s3://nasa-cryo-scratch/h5cloud/kerchunk-repacked/h5repack_ATL03_20190219140808_08110212_006_02_repacked.json",
-        "h5repack_ATL03_20200217204710_08110612_006_01_repacked.json": "s3://nasa-cryo-scratch/h5cloud/kerchunk-repacked/h5repack_ATL03_20200217204710_08110612_006_01_repacked.json",
-        "h5repack_ATL03_20211114142614_08111312_006_01_repacked.json": "s3://nasa-cryo-scratch/h5cloud/kerchunk-repacked/h5repack_ATL03_20211114142614_08111312_006_01_repacked.json",
-        "h5repack_ATL03_20230211164520_08111812_006_01_repacked.json": "s3://nasa-cryo-scratch/h5cloud/kerchunk-repacked/h5repack_ATL03_20230211164520_08111812_006_01_repacked.json"
+    "atl03-kerchunk-bigsize-original": {
+        "atl03_ATL03_20190219140808_08110212_006_02.json": "s3://nasa-cryo-persistent/h5cloud/atl03/big/original/kerchunk/atl03_ATL03_20190219140808_08110212_006_02.json",
+        "atl03_ATL03_20230211164520_08111812_006_01.json": "s3://nasa-cryo-persistent/h5cloud/atl03/big/original/kerchunk/atl03_ATL03_20230211164520_08111812_006_01.json",
+        "atl03_ATL03_20200217204710_08110612_006_01.json": "s3://nasa-cryo-persistent/h5cloud/atl03/big/original/kerchunk/atl03_ATL03_20200217204710_08110612_006_01.json",
+        "atl03_ATL03_20181120182818_08110112_006_02.json": "s3://nasa-cryo-persistent/h5cloud/atl03/big/original/kerchunk/atl03_ATL03_20181120182818_08110112_006_02.json",
+        "atl03_ATL03_20211114142614_08111312_006_01.json": "s3://nasa-cryo-persistent/h5cloud/atl03/big/original/kerchunk/atl03_ATL03_20211114142614_08111312_006_01.json"
     },
-    "original": {
-        "ATL03_20181120182818_08110112_006_02.h5": "s3://nasa-cryo-scratch/h5cloud/original/ATL03_20181120182818_08110112_006_02.h5",
-        "ATL03_20190219140808_08110212_006_02.h5": "s3://nasa-cryo-scratch/h5cloud/original/ATL03_20190219140808_08110212_006_02.h5",
-        "ATL03_20200217204710_08110612_006_01.h5": "s3://nasa-cryo-scratch/h5cloud/original/ATL03_20200217204710_08110612_006_01.h5",
-        "ATL03_20211114142614_08111312_006_01.h5": "s3://nasa-cryo-scratch/h5cloud/original/ATL03_20211114142614_08111312_006_01.h5",
-        "ATL03_20230211164520_08111812_006_01.h5": "s3://nasa-cryo-scratch/h5cloud/original/ATL03_20230211164520_08111812_006_01.h5"
+    "atl03-kerchunk-bigsize-repacked": {
+        "atl03_ATL03_20181120182818_08110112_006_02_repacked.json": "s3://nasa-cryo-persistent/h5cloud/atl03/big/repacked/kerchunk/atl03_ATL03_20181120182818_08110112_006_02_repacked.json",
+        "atl03_ATL03_20190219140808_08110212_006_02_repacked.json": "s3://nasa-cryo-persistent/h5cloud/atl03/big/repacked/kerchunk/atl03_ATL03_20190219140808_08110212_006_02_repacked.json",
+        "atl03_ATL03_20211114142614_08111312_006_01_repacked.json": "s3://nasa-cryo-persistent/h5cloud/atl03/big/repacked/kerchunk/atl03_ATL03_20211114142614_08111312_006_01_repacked.json",
+        "atl03_ATL03_20200217204710_08110612_006_01_repacked.json": "s3://nasa-cryo-persistent/h5cloud/atl03/big/repacked/kerchunk/atl03_ATL03_20200217204710_08110612_006_01_repacked.json",
+        "atl03_ATL03_20230211164520_08111812_006_01_repacked.json": "s3://nasa-cryo-persistent/h5cloud/atl03/big/repacked/kerchunk/atl03_ATL03_20230211164520_08111812_006_01_repacked.json"
+    },
+    "atl03-midsize-original": {
+        "ATL03_20191225111315_13680501_006_01.h5": "s3://nasa-cryo-persistent/h5cloud/atl03/average/original/ATL03_20191225111315_13680501_006_01.h5",
+        "ATL03_20200922221235_13680801_006_02.h5": "s3://nasa-cryo-persistent/h5cloud/atl03/average/original/ATL03_20200922221235_13680801_006_02.h5",
+        "ATL03_20220620155150_13681501_006_01.h5": "s3://nasa-cryo-persistent/h5cloud/atl03/average/original/ATL03_20220620155150_13681501_006_01.h5",
+        "ATL03_20220919113142_13681601_006_01.h5": "s3://nasa-cryo-persistent/h5cloud/atl03/average/original/ATL03_20220919113142_13681601_006_01.h5",
+        "ATL03_20230618223036_13681901_006_01.h5": "s3://nasa-cryo-persistent/h5cloud/atl03/average/original/ATL03_20230618223036_13681901_006_01.h5"
+    },
+    "atl03-midsize-h5repack":{
+        "ATL03_20191225111315_13680501_006_01.h5": "s3://nasa-cryo-persistent/h5cloud/atl03/average/repacked/ATL03_20191225111315_13680501_006_01.h5",
+        "ATL03_20200922221235_13680801_006_02.h5": "s3://nasa-cryo-persistent/h5cloud/atl03/average/repacked/ATL03_20200922221235_13680801_006_02.h5",
+        "ATL03_20220620155150_13681501_006_01.h5": "s3://nasa-cryo-persistent/h5cloud/atl03/average/repacked/ATL03_20220620155150_13681501_006_01.h5",
+        "ATL03_20220919113142_13681601_006_01.h5": "s3://nasa-cryo-persistent/h5cloud/atl03/average/repacked/ATL03_20220919113142_13681601_006_01.h5",
+        "ATL03_20230618223036_13681901_006_01.h5": "s3://nasa-cryo-persistent/h5cloud/atl03/average/repacked/ATL03_20230618223036_13681901_006_01.h5"
+    },
+    "atl03-kerchunk-midsize-original": {
+        "atl03_ATL03_20220919113142_13681601_006_01.json": "s3://nasa-cryo-persistent/h5cloud/atl03/average/original/kerchunk/atl03_ATL03_20220919113142_13681601_006_01.json",
+        "atl03_ATL03_20191225111315_13680501_006_01.json": "s3://nasa-cryo-persistent/h5cloud/atl03/average/original/kerchunk/atl03_ATL03_20191225111315_13680501_006_01.json",
+        "atl03_ATL03_20220620155150_13681501_006_01.json": "s3://nasa-cryo-persistent/h5cloud/atl03/average/original/kerchunk/atl03_ATL03_20220620155150_13681501_006_01.json",
+        "atl03_ATL03_20200922221235_13680801_006_02.json": "s3://nasa-cryo-persistent/h5cloud/atl03/average/original/kerchunk/atl03_ATL03_20200922221235_13680801_006_02.json",
+        "atl03_ATL03_20230618223036_13681901_006_01.json": "s3://nasa-cryo-persistent/h5cloud/atl03/average/original/kerchunk/atl03_ATL03_20230618223036_13681901_006_01.json"
+    },
+    "atl03-kerchunk-midsize-repacked": {
+        "atl03_ATL03_20220620155150_13681501_006_01.json": "s3://nasa-cryo-persistent/h5cloud/atl03/average/repacked/kerchunk/atl03_ATL03_20220620155150_13681501_006_01.json",
+        "atl03_ATL03_20191225111315_13680501_006_01.json": "s3://nasa-cryo-persistent/h5cloud/atl03/average/repacked/kerchunk/atl03_ATL03_20191225111315_13680501_006_01.json",
+        "atl03_ATL03_20220919113142_13681601_006_01.json": "s3://nasa-cryo-persistent/h5cloud/atl03/average/repacked/kerchunk/atl03_ATL03_20220919113142_13681601_006_01.json",
+        "atl03_ATL03_20200922221235_13680801_006_02.json": "s3://nasa-cryo-persistent/h5cloud/atl03/average/repacked/kerchunk/atl03_ATL03_20200922221235_13680801_006_02.json",
+        "atl03_ATL03_20230618223036_13681901_006_01.json": "s3://nasa-cryo-persistent/h5cloud/atl03/average/repacked/kerchunk/atl03_ATL03_20230618223036_13681901_006_01.json"
     }
 }

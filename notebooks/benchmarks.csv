@@ -1,0 +1,47 @@
+,tool,dataset,cloud-aware,format,file,time,mean,size,product
+0,h5py,ATL03-1GB,no,original,s3://nasa-cryo-persistent/h5cloud/atl03/average/original/ATL03_20230618223036_13681901_006_01.h5,2.843794107437134,386.06738,1GB,ATL03
+1,h5py,ATL03-1GB,no,optimized,s3://nasa-cryo-persistent/h5cloud/atl03/average/repacked/ATL03_20230618223036_13681901_006_01.h5,4.157144546508789,386.06738,1GB,ATL03
+2,h5py,ATL03-7GB,no,original,s3://nasa-cryo-persistent/h5cloud/atl03/big/original/ATL03_20181120182818_08110112_006_02.h5,6.9494102001190186,1035.1631,7GB,ATL03
+3,h5py,ATL03-7GB,no,optimized,s3://nasa-cryo-persistent/h5cloud/atl03/big/repacked/ATL03_20181120182818_08110112_006_02_repacked.h5,13.6586012840271,1035.1631,7GB,ATL03
+4,h5py,ATL03-2GB,no,original,s3://nasa-cryo-persistent/h5cloud/atl03/big/original/ATL03_20210402143840_01341107_006_02.h5,1.4053022861480713,2049.7554,2GB,ATL03
+5,h5py,ATL03-2GB,no,optimized,s3://nasa-cryo-persistent/h5cloud/atl03/big/repacked/ATL03_20210402143840_01341107_006_02_repacked.h5,1.0851728916168213,2049.7554,2GB,ATL03
+6,kerchunk,ATL03-7GB-kerchunk,no,original,s3://nasa-cryo-persistent/h5cloud/atl03/big/original/kerchunk/atl03_ATL03_20181120182818_08110112_006_02.json,10.746918678283691,"<xarray.DataArray 'h_ph' ()>
+array(1035.1631, dtype=float32)",7GB,ATL03
+7,kerchunk,ATL03-7GB-kerchunk,no,optimized,s3://nasa-cryo-persistent/h5cloud/atl03/big/repacked/kerchunk/atl03_ATL03_20181120182818_08110112_006_02_repacked.json,8.8134024143219,"<xarray.DataArray 'h_ph' ()>
+array(1035.1631, dtype=float32)",7GB,ATL03
+8,xarray,ATL03-1GB,no,original,s3://nasa-cryo-persistent/h5cloud/atl03/average/original/ATL03_20230618223036_13681901_006_01.h5,46.50308704376221,"<xarray.DataArray 'h_ph' ()>
+array(386.06738, dtype=float32)",1GB,ATL03
+9,xarray,ATL03-1GB,no,optimized,s3://nasa-cryo-persistent/h5cloud/atl03/average/repacked/ATL03_20230618223036_13681901_006_01.h5,10.25867509841919,"<xarray.DataArray 'h_ph' ()>
+array(386.06738, dtype=float32)",1GB,ATL03
+10,xarray,ATL03-7GB,no,original,s3://nasa-cryo-persistent/h5cloud/atl03/big/original/ATL03_20181120182818_08110112_006_02.h5,62.89623713493347,"<xarray.DataArray 'h_ph' ()>
+array(1035.1631, dtype=float32)",7GB,ATL03
+11,xarray,ATL03-7GB,no,optimized,s3://nasa-cryo-persistent/h5cloud/atl03/big/repacked/ATL03_20181120182818_08110112_006_02_repacked.h5,81.67518210411072,"<xarray.DataArray 'h_ph' ()>
+array(1035.1631, dtype=float32)",7GB,ATL03
+12,xarray,ATL03-2GB,no,original,s3://nasa-cryo-persistent/h5cloud/atl03/big/original/ATL03_20210402143840_01341107_006_02.h5,47.506706953048706,"<xarray.DataArray 'h_ph' ()>
+array(2049.7554, dtype=float32)",2GB,ATL03
+13,xarray,ATL03-2GB,no,optimized,s3://nasa-cryo-persistent/h5cloud/atl03/big/repacked/ATL03_20210402143840_01341107_006_02_repacked.h5,18.109654188156128,"<xarray.DataArray 'h_ph' ()>
+array(2049.7554, dtype=float32)",2GB,ATL03
+14,h5coro,ATL03-1GB,no,original,s3://nasa-cryo-persistent/h5cloud/atl03/average/original/ATL03_20230618223036_13681901_006_01.h5,4.562052011489868,386.06738,1GB,ATL03
+15,h5coro,ATL03-1GB,no,optimized,s3://nasa-cryo-persistent/h5cloud/atl03/average/repacked/ATL03_20230618223036_13681901_006_01.h5,4.286046743392944,386.06738,1GB,ATL03
+16,h5coro,ATL03-7GB,no,original,s3://nasa-cryo-persistent/h5cloud/atl03/big/original/ATL03_20181120182818_08110112_006_02.h5,14.072925567626953,1035.1631,7GB,ATL03
+17,h5coro,ATL03-7GB,no,optimized,s3://nasa-cryo-persistent/h5cloud/atl03/big/repacked/ATL03_20181120182818_08110112_006_02_repacked.h5,11.79448390007019,1035.1631,7GB,ATL03
+18,h5coro,ATL03-2GB,no,original,s3://nasa-cryo-persistent/h5cloud/atl03/big/original/ATL03_20210402143840_01341107_006_02.h5,3.1101267337799072,2049.7554,2GB,ATL03
+19,h5coro,ATL03-2GB,no,optimized,s3://nasa-cryo-persistent/h5cloud/atl03/big/repacked/ATL03_20210402143840_01341107_006_02_repacked.h5,1.8120653629302979,2049.7554,2GB,ATL03
+20,h5py,ATL03-1GB,yes,original,s3://nasa-cryo-persistent/h5cloud/atl03/average/original/ATL03_20230618223036_13681901_006_01.h5,1.8618409633636475,386.06738,1GB,ATL03
+21,h5py,ATL03-1GB,yes,optimized,s3://nasa-cryo-persistent/h5cloud/atl03/average/repacked/ATL03_20230618223036_13681901_006_01.h5,1.9302234649658203,386.06738,1GB,ATL03
+22,h5py,ATL03-7GB,yes,original,s3://nasa-cryo-persistent/h5cloud/atl03/big/original/ATL03_20181120182818_08110112_006_02.h5,6.602761507034302,1035.1631,7GB,ATL03
+23,h5py,ATL03-7GB,yes,optimized,s3://nasa-cryo-persistent/h5cloud/atl03/big/repacked/ATL03_20181120182818_08110112_006_02_repacked.h5,5.758350849151611,1035.1631,7GB,ATL03
+24,h5py,ATL03-2GB,yes,original,s3://nasa-cryo-persistent/h5cloud/atl03/big/original/ATL03_20210402143840_01341107_006_02.h5,1.2604756355285645,2049.7554,2GB,ATL03
+25,h5py,ATL03-2GB,yes,optimized,s3://nasa-cryo-persistent/h5cloud/atl03/big/repacked/ATL03_20210402143840_01341107_006_02_repacked.h5,0.8633284568786621,2049.7554,2GB,ATL03
+26,xarray,ATL03-1GB,yes,original,s3://nasa-cryo-persistent/h5cloud/atl03/average/original/ATL03_20230618223036_13681901_006_01.h5,42.18248891830444,"<xarray.DataArray 'h_ph' ()>
+array(386.06738, dtype=float32)",1GB,ATL03
+27,xarray,ATL03-1GB,yes,optimized,s3://nasa-cryo-persistent/h5cloud/atl03/average/repacked/ATL03_20230618223036_13681901_006_01.h5,2.5429904460906982,"<xarray.DataArray 'h_ph' ()>
+array(386.06738, dtype=float32)",1GB,ATL03
+28,xarray,ATL03-7GB,yes,original,s3://nasa-cryo-persistent/h5cloud/atl03/big/original/ATL03_20181120182818_08110112_006_02.h5,48.71459078788757,"<xarray.DataArray 'h_ph' ()>
+array(1035.1631, dtype=float32)",7GB,ATL03
+29,xarray,ATL03-7GB,yes,optimized,s3://nasa-cryo-persistent/h5cloud/atl03/big/repacked/ATL03_20181120182818_08110112_006_02_repacked.h5,6.6719231605529785,"<xarray.DataArray 'h_ph' ()>
+array(1035.1631, dtype=float32)",7GB,ATL03
+30,xarray,ATL03-2GB,yes,original,s3://nasa-cryo-persistent/h5cloud/atl03/big/original/ATL03_20210402143840_01341107_006_02.h5,40.31614112854004,"<xarray.DataArray 'h_ph' ()>
+array(2049.7554, dtype=float32)",2GB,ATL03
+31,xarray,ATL03-2GB,yes,optimized,s3://nasa-cryo-persistent/h5cloud/atl03/big/repacked/ATL03_20210402143840_01341107_006_02_repacked.h5,2.156572103500366,"<xarray.DataArray 'h_ph' ()>
+array(2049.7554, dtype=float32)",2GB,ATL03

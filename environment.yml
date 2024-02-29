@@ -1,0 +1,23 @@
+name: h5cloud
+channels:
+  - conda-forge
+dependencies:
+  - jupyterlab
+  - boto3
+  - tqdm
+  - matplotlib-base
+  - pandas
+  - numpy
+  - s3fs
+  - xarray
+  - dask
+  - distributed
+  - geopandas
+  - h5py>=3.10
+  - zarr
+  - kerchunk
+  - h5netcdf
+  - pip
+  - pip:
+    - git+https://github.com/betolink/filesystem_spec.git
+    - git+https://github.com/ICESat2-SlideRule/h5coro.git
