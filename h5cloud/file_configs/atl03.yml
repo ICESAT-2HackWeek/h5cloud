@@ -1,0 +1,13 @@
+collection: "atl03__006"
+group: "/gt1l/heights"
+variable: "h_ph"
+lat_group: "lat_ph"
+lon_group: "lon_ph"
+# create
+files:
+  original:
+    link: "s3://is2-cloud-experiments/h5cloud/atl03/average/original/ATL03_20191225111315_13680501_006_01.h5"
+    processing: null
+  repack_page_4gb:
+    link: "s3://is2-cloud-experiments/h5cloud/atl03/average/repacked/ATL03_20191225111315_13680501_006_01.h5"
+    processing: "h5repack -S PAGE -G 4000000"
