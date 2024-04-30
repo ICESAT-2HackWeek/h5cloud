@@ -15,11 +15,9 @@ h5coro.config(errorChecking=True, verbose=False, enableAttributes=False)
     
 class H5CoroArrMean(H5Test):
     @timer_decorator
-    def run(self):
-        group = '/gt1l/heights'
-        variable = 'h_ph'        
+    def run(self):    
         final_h5coro_array = []
-        for file in self.files:
+        for file in self.test_config.files:
             h5obj = h5coro.H5Coro(file.replace("s3://", ""), s3driver.S3Driver)
             output = h5obj.readDatasets(datasets=[f'{group}/{variable}'], block=True)
             data = h5obj[f'{group}/{variable}'].values

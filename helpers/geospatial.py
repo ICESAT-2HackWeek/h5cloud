@@ -4,7 +4,7 @@ os.environ['USE_PYGEOS'] = '0'
 import geopandas as gpd
 import numpy as np
 
-geojson_path = '/home/jovyan/h5cloud/helpers/antarctic_aoi.geojson'
+geojson_path = f"{os.path.abspath('helpers')}/antarctic_aoi.geojson"
 
 def get_subset_region(geometry=None):
     """Returns bounds from geojson or list

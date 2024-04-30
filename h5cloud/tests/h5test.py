@@ -6,10 +6,10 @@ from datetime import datetime
 import os
 import s3fs
 import sys
-
 current = os.path.abspath('..')
 sys.path.append(current)
-from helpers.links import S3Links
+from ..test_config import TestConfig
+# from helpers.links import S3Links
 
 def generate_timestamp():
     return datetime.now().strftime('%Y-%m-%d-%H%M%S')
@@ -25,31 +25,30 @@ def timer_decorator(func):
         execution_time = end_time - start_time
         # Call the store method here
         if self.store_results:
-            results_key = f"{generate_timestamp()}_{self.name}_{self.data_format}_results.csv"
+            data_format = args[0]
+            results_key = f"{generate_timestamp()}_{self.name}_{data_format}_results.csv"
             s3_key = f"{self.results_directory}/{results_key}"
-            self.store(run_time=execution_time, result=result, bucket=self.bucket, s3_key=s3_key)
+            self.store(run_time=execution_time, result=result, bucket=self.results_bucket, s3_key=s3_key, data_format=data_format)
         return result, execution_time
     return wrapper
 
 class H5Test:
-    def __init__(self, data_format: str, files=None, store_results=True):
+    def __init__(self, test_config: TestConfig, store_results=True):
         self.name = self.__class__.__name__
-        self.data_format = data_format
-        if files:
-            self.files = files
-        else:
-            self.files = S3Links().get_links_by_format(data_format)
+        self.test_config = test_config
         self.s3_client = boto3.client('s3')  # Ensure AWS credentials are configured
         self.s3_fs = s3fs.S3FileSystem(anon=False)
+        self.results = []
         self.store_results = store_results
-        self.bucket = "nasa-cryo-scratch"
-        self.results_directory = "h5cloud/benchmark_results"        
+        self.results_bucket = test_config.results_bucket
+        self.results_directory = test_config.results_directory
 
     @timer_decorator
-    def run(self):
+    # file format should match one of the options for files in the test_config
+    def run(self, file_format: str):
         raise NotImplementedError("The run method has not been implemented")
 
-    def store(self, run_time: float, result: str, bucket: str, s3_key: str):
+    def store(self, run_time: float, result: str, bucket: str, s3_key: str, data_format: str):
         """
         Store test results to an S3 bucket as a CSV file.
 
@@ -62,13 +61,13 @@ class H5Test:
         csv_buffer = StringIO()
         csv_writer = csv.writer(csv_buffer)
         csv_writer.writerow(['Name', 'Data Format', 'Run Time', 'Result'])  # Headers
-        csv_writer.writerow([self.name, self.data_format, run_time, result])
+        csv_writer.writerow([self.name, data_format, run_time, result])
 
         # Reset the buffer's position to the beginning
         csv_buffer.seek(0)
 
         # Upload the CSV to S3
-        self.s3_client.put_object(Bucket=bucket, Key=s3_key, Body=csv_buffer.getvalue())
+        return self.s3_client.put_object(Bucket=bucket, Key=s3_key, Body=csv_buffer.getvalue())
 
 ## Example subclass
 # class SampleTest(H5Test):
