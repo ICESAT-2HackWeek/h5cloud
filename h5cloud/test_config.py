@@ -14,7 +14,7 @@ class TestConfig(BaseModel):
     variable: str
     lat_group: Optional[str] = None
     lon_group: Optional[str] = None
-    files: Dict[str, FileConfig]    
+    files: Dict[str, FileConfig]
         
     def load_from_yaml(yaml_file: str, results_bucket: str, results_directory: str):
         """

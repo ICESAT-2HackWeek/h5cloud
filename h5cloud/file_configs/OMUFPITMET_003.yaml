@@ -1,0 +1,32 @@
+collection: OMUFPITMET
+files:
+  kerchunk:
+    input_file: original
+    link: s3://nasa-veda-scratch/eodc_hdf5_experiments/OMUFPITMET___003/kerchunk___OMI-Aura_ANC-OMUFPITMET_2004m1001t000305-o01132_v003-2018m1015t140708.json
+    processing: "def generate_json_reference(in_filename, out_filename):\n    so =\
+      \ dict(mode=\"rb\", default_fill_cache=False, default_cache_type=\"first\")\n\
+      \    with fs_read.open(in_filename, **so) as infile:     \n        h5chunks\
+      \ = SingleHdf5ToZarr(in_filename)\n        suffix = out_filename.split(\".\"\
+      )[-1]\n        out_filename = out_filename.replace(suffix, 'json')\n       \
+      \ with open(out_filename, 'w') as outfile:\n            outfile.write(json.dumps(h5chunks.translate()))\n\
+      \        return out_filename\n"
+  kerchunk_repacked_page_4gb:
+    input_file: repacked_page_4gb
+    link: s3://nasa-veda-scratch/eodc_hdf5_experiments/OMUFPITMET___003/kerchunk_repacked_page_4gb___OMI-Aura_ANC-OMUFPITMET_2004m1001t000305-o01132_v003-2018m1015t140708.json
+    processing: "def generate_json_reference(in_filename, out_filename):\n    so =\
+      \ dict(mode=\"rb\", default_fill_cache=False, default_cache_type=\"first\")\n\
+      \    with fs_read.open(in_filename, **so) as infile:     \n        h5chunks\
+      \ = SingleHdf5ToZarr(in_filename)\n        suffix = out_filename.split(\".\"\
+      )[-1]\n        out_filename = out_filename.replace(suffix, 'json')\n       \
+      \ with open(out_filename, 'w') as outfile:\n            outfile.write(json.dumps(h5chunks.translate()))\n\
+      \        return out_filename\n"
+  original:
+    input_file: null
+    link: s3://nasa-veda-scratch/eodc_hdf5_experiments/OMUFPITMET___003/original/OMI-Aura_ANC-OMUFPITMET_2004m1001t000305-o01132_v003-2018m1015t140708.nc4
+    procssing: null
+  repacked_page_4gb:
+    input_file: original
+    link: s3://nasa-veda-scratch/eodc_hdf5_experiments/OMUFPITMET___003/repacked_page_4gb___OMI-Aura_ANC-OMUFPITMET_2004m1001t000305-o01132_v003-2018m1015t140708.nc4
+    processing: h5repack -S PAGE -G 4000000
+group: /
+variable: PS

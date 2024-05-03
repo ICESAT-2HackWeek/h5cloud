@@ -15,11 +15,10 @@ h5coro.config(errorChecking=True, verbose=False, enableAttributes=False)
     
 class H5CoroArrMean(H5Test):
     @timer_decorator
-    def run(self):    
+    def run(self, file_format: str):
+        tc = self.test_config
         final_h5coro_array = []
-        for file in self.test_config.files:
-            h5obj = h5coro.H5Coro(file.replace("s3://", ""), s3driver.S3Driver)
-            output = h5obj.readDatasets(datasets=[f'{group}/{variable}'], block=True)
-            data = h5obj[f'{group}/{variable}'].values
-            final_h5coro_array = np.insert(final_h5coro_array, len(final_h5coro_array), data, axis=None)
-        return np.mean(final_h5coro_array)
+        file = tc.files[file_format]
+        h5obj = h5coro.H5Coro(file.link.replace("s3://", ""), s3driver.S3Driver)
+        h5obj.readDatasets(datasets=[f'{tc.group}/{tc.variable}'], block=True)
+        return h5obj[f'{tc.group}/{tc.variable}'].values.mean()

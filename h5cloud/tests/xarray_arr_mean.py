@@ -4,28 +4,26 @@ import xarray as xr
 import numpy as np
 
 class XarrayArrMean(H5Test):
-    def open_reference_ds(self, file):
+    def open_reference_ds(self, file: str, io_params: dict = {}):
         fs = fsspec.filesystem(
             'reference', 
             fo=file, 
             remote_protocol='s3', 
             remote_options=dict(anon=False), 
-            skip_instance_cache=True
+            skip_instance_cache=True,
+            **io_params.get('fsspec_params', {})
         )
-        return xr.open_dataset(fs.get_mapper(""), engine='zarr', consolidated=False, group='gt1l/heights')
+        return xr.open_dataset(fs.get_mapper(""), engine='zarr', consolidated=False, group=self.test_config.group, cache=False)
 
     @timer_decorator
-    def run(self):
-        group = '/gt1l/heights'
-        variable = 'h_ph'
-        if 'kerchunk' in self.data_format:
-            datasets = [self.open_reference_ds(file) for file in self.files]
-            h_ph_values = []
-            for dataset in datasets:
-                h_ph_values = np.append(h_ph_values, dataset['h_ph'].values)
-            return np.mean(h_ph_values)
+    def run(self, file_format: str, io_params: dict = {}):
+        tc = self.test_config
+        file = tc.files[file_format]        
+        if 'kerchunk' in file_format:
+            xrds = self.open_reference_ds(file=file.link)
         else:
-            s3_fileset = [self.s3_fs.open(file) for file in self.files]
-            xrds = xr.open_mfdataset(s3_fileset, group=group, combine='by_coords', engine='h5netcdf')
-            h_ph_values = xrds['h_ph']
-            return float(np.mean(h_ph_values).values)
+            file_opener = self.s3_fs.open(file.link, **io_params.get('fsspec_params', {}))
+            xrds = xr.open_dataset(file_opener, group=tc.group, engine='h5netcdf', **io_params.get('h5py_params', {}), cache=False)
+        data = xrds[tc.variable]
+        xrds.close()
+        return float(data.mean().values)
