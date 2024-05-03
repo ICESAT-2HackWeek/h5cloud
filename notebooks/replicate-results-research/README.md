@@ -8,12 +8,12 @@ The goal of this research was 2 fold:
 ## Discoveries:
 
 1. In [01-check-co-hdf5-cmr.ipynb](01-check-co-hdf5-cmr.ipynb) we discovered that **all NASA HDF5 datasets in Earthdata Cloud** use the HDF5 defaults for file space management - that is:
-    a. `strategy = FSM_AGGR`: Use free-space managers, aggregators and virtual file driver for file space allocation.
-    b. `page size = 4096`: File space page size in bytes is 4kb. ([source](https://docs.hdfgroup.org/archive/support/HDF5/doc/RM/Tools.html))
+    * `strategy = FSM_AGGR`: Use free-space managers, aggregators and virtual file driver for file space allocation.
+    * `page size = 4096`: File space page size in bytes is 4kb. ([source](https://docs.hdfgroup.org/archive/support/HDF5/doc/RM/Tools.html))
 2. This finds the same results as `HDF at the speed of Zarr` for ATL03, such as:
-    a. h5py library - best performance is seen using "informed parameters". Repacking makes a much less significant difference.
-    b. h5coro - Difference in performance between the original and repacked versions seems insignificant.
-    c. xarray - best performance was seen with kerchunk, but a repacked version performs better than the original. Informed parameters may also improve performance with the repacked version.
+    * h5py library - best performance is seen using "informed parameters". Repacking makes a much less significant difference.
+    * h5coro - Difference in performance between the original and repacked versions seems insignificant.
+    * xarray - best performance was seen with kerchunk, but a repacked version performs better than the original. Informed parameters may also improve performance with the repacked version.
 3. In testing with other datasets, results varied and more testing may be needed.
     * For reading with h5py, repacking and informed parameters does appear to make a difference, except in the case of ATL08. But more analysis and robust testing should be done.
     * For reading with h5coro, repacking does not appear to make a significant difference.
