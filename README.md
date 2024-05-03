@@ -12,7 +12,7 @@ Requires [CryoCloud user account](https://book.cryointhecloud.com/content/Gettin
 Create a config (or use an existing config) in `h5cloud/configs`. Each config defines a set of files which should be from the same collection but from different processing pipelines.
 
 ```yaml
-collection: "atl03__006"
+collection: "atl03"
 group: "/gt1l/heights"
 variable: "h_ph"
 lat_group: "lat_ph"
@@ -33,7 +33,7 @@ Then when you run the test:
 from h5cloud import TestConfig
 from h5cloud.tests import H5pyArrSubsetMean
 
-tc = TestConfig.init(collection="config/atl03.yml" bucket="eodc-scratch", directory="h5cloud-tests/test-results")
+tc = TestConfig.init(yaml_file="h5cloud/file_configs/atl03.yml" bucket="eodc-scratch", directory="h5cloud-tests/test-results")
 h5py_arr_subset_test = H5pyArrSubsetMean(tc)
 og_result = h5py_arr_subset_test.run('orginal')
 repacked_result = h5py_arr_subset_test.run('repack_page_4gb')

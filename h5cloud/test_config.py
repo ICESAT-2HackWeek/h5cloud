@@ -25,7 +25,7 @@ class TestConfig(BaseModel):
                 data = yaml.safe_load(file)
                 return TestConfig(results_bucket=results_bucket, results_directory=results_directory, **data)
         except FileNotFoundError:
-            print(f"Error: The file {self.yaml_file} was not found.")
+            print(f"Error: The file {yaml_file} was not found.")
         except yaml.YAMLError as exc:
             print(f"Error in YAML formatting: {exc}")
         except Exception as e:
