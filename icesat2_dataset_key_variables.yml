@@ -15,9 +15,10 @@ products:
   - dataset: atl08
     name: ATLAS/ICESat-2 L3A Land and Vegetation Height
     variable: /gtx/land_segments/canopy/h_canopy
+    reference: https://doi.org/10.1016/j.rse.2018.11.005
   - dataset: atl09
-    name:
-    variable: 
+    name: ATLAS/ICESat-2 L3A Calibrated Backscatter Profiles and Atmospheric Layer Characteristics
+    variable: /profile_x/high_rate/cab_prof
   - dataset: atl10
     name:
     variable: 
