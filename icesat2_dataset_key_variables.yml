@@ -1,0 +1,24 @@
+# Key variables in IceSat-2 Level 2A and 3A Products
+products:
+  - dataset: alt03
+    name: ATLAS/ICESat-2 L2A Global Geolocated Photon Data
+    variable: /gtx/heights/h_ph
+  - dataset: atl04
+    name: ATLAS/ICESat-2 L2A Normalized Relative Backscatter Profiles
+    variable: /profile_x/nrb_profile
+  - dataset: atl06
+    variable: 
+  - dataset: atl07
+    variable: 
+  - dataset: atl08
+    variable: 
+  - dataset: atl09
+    variable: 
+  - dataset: atl10
+    variable: 
+  - dataset: atl11
+    variable: 
+  - dataset: atl12
+    variable: 
+  - dataset: atl13
+    variable: 
