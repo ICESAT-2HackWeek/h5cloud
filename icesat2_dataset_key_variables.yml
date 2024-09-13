@@ -30,9 +30,9 @@ products:
     variable: /gtx/freeboard_segment/heights/height_segment_height
     long_name: height of segment surface
   - dataset: atl11
-    name:
-    variable: 
-    long_name:    
+    name: ATLAS/ICESat-2 L3B Slope-Corrected Land Ice Height Time Series
+    variable: /ptX/h_corr
+    long_name: mean corrected height
   - dataset: atl12
     name:
     variable: 
