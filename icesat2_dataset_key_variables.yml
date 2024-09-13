@@ -7,18 +7,26 @@ products:
     name: ATLAS/ICESat-2 L2A Normalized Relative Backscatter Profiles
     variable: /profile_x/nrb_profile
   - dataset: atl06
-    variable: 
+    name: ATLAS/ICESat-2 L3A Land Ice Height
+    variable: /gtx/land_ice_segments/h_li 
   - dataset: atl07
-    variable: 
+    name: ATLAS/ICESat-2 L3A Sea Ice Height
+    variable:  /gtx/sea_ice_segments/heights/height_segment_height
   - dataset: atl08
-    variable: 
+    name: ATLAS/ICESat-2 L3A Land and Vegetation Height
+    variable: /gtx/land_segments/canopy/h_canopy
   - dataset: atl09
+    name:
     variable: 
   - dataset: atl10
+    name:
     variable: 
   - dataset: atl11
+    name:
     variable: 
   - dataset: atl12
+    name:
     variable: 
   - dataset: atl13
+    name:
     variable: 
