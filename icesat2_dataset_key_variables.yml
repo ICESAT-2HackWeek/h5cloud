@@ -26,9 +26,9 @@ products:
     variable: /profile_x/high_rate/cab_prof
     long_name: calibrated attenuated backscatter
   - dataset: atl10
-    name:
-    variable: 
-    long_name:    
+    name: ATLAS/ICESat-2 L3A Sea Ice Freeboard
+    variable: /gtx/freeboard_segment/heights/height_segment_height
+    long_name: height of segment surface
   - dataset: atl11
     name:
     variable: 
