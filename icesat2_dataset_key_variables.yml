@@ -19,6 +19,7 @@ products:
   - dataset: atl09
     name: ATLAS/ICESat-2 L3A Calibrated Backscatter Profiles and Atmospheric Layer Characteristics
     variable: /profile_x/high_rate/cab_prof
+    long_name: calibrated attenuated backscatter
   - dataset: atl10
     name:
     variable: 
