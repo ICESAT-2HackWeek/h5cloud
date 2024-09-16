@@ -9,7 +9,7 @@ products:
     variable: /profile_x/nrb_profile
     long_name:    
   - dataset: atl06
-    name: ATLAS/ICESat-2 L3A Land Ice Height
+    name: ATLAS/ICESat-2 L3A Land Ice Heighthttps://github.com/ICESAT-2HackWeek/h5cloud/blob/add_product_key_variables_table/icesat2_dataset_key_variables.yml
     variable: /gtx/land_ice_segments/h_li 
     long_name:    
   - dataset: atl07
@@ -34,9 +34,9 @@ products:
     variable: /ptX/h_corr
     long_name: mean corrected height
   - dataset: atl12
-    name:
-    variable: 
-    long_name:    
+    name: ATLAS/ICESat-2 L3A Ocean Surface Height
+    variable: /gtx/ssh_segments/heights/h
+    long_name: mean sea surface height
   - dataset: atl13
     name:
     variable: 
